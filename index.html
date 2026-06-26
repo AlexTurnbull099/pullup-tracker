@@ -13,7 +13,7 @@
     --bg:#0b0f14; --bg2:#121822; --card:#161e2b; --card2:#1d2736;
     --line:#243043; --txt:#e9eef5; --muted:#8aa0bb; --faint:#5c728e;
     --accent:#3ddc97; --accent2:#2bb0ff; --warn:#ffb454; --danger:#ff5d6c;
-    --heavy:#ff6b6b; --volume:#2bb0ff; --light:#3ddc97; --rest:#9aa7b8;
+    --heavy:#ff6b6b; --volume:#2bb0ff; --light:#3ddc97; --rest:#9aa7b8; --surf:#18c5d4;
     --r:16px; --tap:48px;
   }
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
@@ -47,15 +47,19 @@
   .dot{width:14px; height:14px; border-radius:50%; flex:none; box-shadow:0 0 14px currentColor;}
   .daybar h2{margin:0; font-size:22px; font-weight:800;}
   .daybar p{margin:2px 0 0; font-size:12.5px; color:var(--muted);}
-  .t-heavy{color:var(--heavy);} .t-volume{color:var(--volume);} .t-light{color:var(--light);} .t-rest{color:var(--rest);}
+  .t-heavy{color:var(--heavy);} .t-volume{color:var(--volume);} .t-light{color:var(--light);} .t-rest{color:var(--rest);} .t-surf{color:var(--surf);}
 
   /* Override picker */
-  .seg{display:flex; gap:6px; margin-bottom:16px;}
+  .seg{display:flex; gap:6px; margin-bottom:12px;}
   .seg button{flex:1; padding:10px 4px; border-radius:11px; background:var(--card); border:1px solid var(--line);
     font-size:12px; font-weight:700; color:var(--muted);}
   .seg button.on{color:var(--bg); border-color:transparent;}
   .seg button.on.s-heavy{background:var(--heavy);} .seg button.on.s-volume{background:var(--volume);}
   .seg button.on.s-light{background:var(--light);} .seg button.on.s-rest{background:var(--rest);}
+  .surfbtn{width:100%; height:46px; border-radius:12px; margin-bottom:16px; display:flex; align-items:center; justify-content:center; gap:7px;
+    background:rgba(24,197,212,.1); border:1px solid var(--surf); color:var(--surf); font-size:14px; font-weight:700;}
+  .surfbtn:active{background:rgba(24,197,212,.22);}
+  .surfbtn.logged{background:rgba(24,197,212,.18);}
 
   /* Exercise card */
   .ex{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:14px; margin-bottom:12px; transition:border-color .2s;}
@@ -181,6 +185,7 @@
       </div>
     </div>
     <div class="seg" id="seg"></div>
+    <button class="surfbtn" id="surfBtn">🏄 Surfed today</button>
     <div id="exList"></div>
 
     <div id="logExtras">
@@ -292,6 +297,7 @@ const DAY = {
   volume: {name:"Volume", desc:"Accumulate reps — submaximal sets, short rest", cls:"t-volume", seg:"s-volume"},
   light:  {name:"Light",  desc:"Skill & recover — easy reps, hangs, never strain", cls:"t-light", seg:"s-light"},
   rest:   {name:"Rest",   desc:"Recovery is part of training. Sleep, eat, grow.", cls:"t-rest", seg:"s-rest"},
+  surf:   {name:"Surf",   desc:"Paddle session — counts as pulling volume.", cls:"t-surf"},
 };
 
 // unit: 'reps' | 'sec'. pull: counts toward pull/chin volume chart. top: top-of-range rep for level-up flag.
@@ -467,6 +473,11 @@ function renderToday(){
 
   document.getElementById("note").value = draft.note;
   document.getElementById("bw").value = draft.bw;
+
+  const surfBtn = document.getElementById("surfBtn");
+  const surfedToday = state.sessions.some(s=>s.type==="surf" && s.date===todayISO());
+  surfBtn.textContent = surfedToday ? "🏄 Surfed today ✓" : "🏄 Surfed today";
+  surfBtn.classList.toggle("logged", surfedToday);
 }
 
 function exerciseCard(ex,i){
@@ -597,6 +608,31 @@ function logSession(){
   window.scrollTo({top:0, behavior:"smooth"});
 }
 
+/* ---------- Log a surf session ---------- */
+// Surfing is its own session type. It counts toward streak/this-week/history
+// but does NOT advance the bar cycle and has no countable reps for the volume chart.
+function logSurf(){
+  const d = todayISO();
+  const already = state.sessions.some(s=>s.type==="surf" && s.date===d);
+  if(already){
+    toast("Surf already logged today 🏄");
+  } else {
+    state.sessions.push({id:Date.now(), date:d, type:"surf", exercises:[], note:"", bw:null});
+    save();
+    toast("Surf logged 🏄");
+  }
+  renderHeader();
+
+  // Offer to make today a Light day on the bar — your back already paddled.
+  const t = activeType();
+  if(t!=="light" && t!=="rest"){
+    if(confirm("Nice 🏄 Your back already got paddling volume today. Make today a LIGHT day on the bar?\n\n(Or tap Rest yourself if you're beat up.)")){
+      overrideType = "light"; draft = null;
+    }
+  }
+  renderToday();
+}
+
 /* ---------- Strict max ---------- */
 function setMax(v){
   v = Math.max(0, Math.round(v));
@@ -708,7 +744,9 @@ function renderHistory(){
     const d=new Date(s.date+"T00:00:00");
     const row=document.createElement("div");
     row.className="hrow";
-    const exSummary = s.exercises.map(e=>`${e.n} ${e.sets.join("/")}${e.unit==="sec"?"s":""}`).join(" · ") || "rest";
+    const exSummary = s.exercises.length
+      ? s.exercises.map(e=>`${e.n} ${e.sets.join("/")}${e.unit==="sec"?"s":""}`).join(" · ")
+      : (s.type==="surf" ? "Paddle session 🌊" : "rest");
     const color = `var(--${s.type})`;
     row.innerHTML = `
       <div class="hd"><div class="dnum">${d.getDate()}</div><div class="dmon">${months[d.getMonth()]}</div></div>
@@ -764,7 +802,7 @@ function exportJson(){ download("pullup-log.json", JSON.stringify(state,null,2),
 function exportCsv(){
   const rows=[["date","day_type","exercise","unit","sets_detail","total","bodyweight","note"]];
   state.sessions.forEach(s=>{
-    if(s.exercises.length===0){ rows.push([s.date,s.type,"(rest)","","","",s.bw??"",s.note]); }
+    if(s.exercises.length===0){ rows.push([s.date,s.type,s.type==="surf"?"(surf)":"(rest)","","","",s.bw??"",s.note]); }
     s.exercises.forEach(e=>{
       const total=e.sets.reduce((a,b)=>a+b,0);
       rows.push([s.date,s.type,e.n,e.unit,e.sets.join(" "),total,s.bw??"",s.note]);
@@ -808,6 +846,7 @@ function renderAll(){ renderHeader(); renderToday(); }
 
 document.querySelectorAll("nav button").forEach(b=> b.onclick=()=>setTab(b.dataset.tab));
 document.getElementById("doneBtn").onclick = logSession;
+document.getElementById("surfBtn").onclick = logSurf;
 document.getElementById("note").addEventListener("input", e=>{ if(draft) draft.note=e.target.value; });
 document.getElementById("bw").addEventListener("input", e=>{ if(draft) draft.bw=e.target.value; });
 
