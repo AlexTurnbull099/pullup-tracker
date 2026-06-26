@@ -172,6 +172,23 @@
   .btn-row{display:flex; gap:8px;}
   .btn-2{flex:1; height:46px; border-radius:12px; background:var(--card); border:1px solid var(--line); font-size:14px; font-weight:700;}
   .btn-2.danger{color:var(--danger); border-color:rgba(194,94,82,.4);}
+  /* Modal (custom confirm / prompt) */
+  .modal-bg{position:fixed; inset:0; z-index:80; display:flex; align-items:center; justify-content:center; padding:26px;
+    background:rgba(35,52,48,.45); opacity:0; transition:opacity .18s;}
+  .modal-bg.open{opacity:1;}
+  .modal{width:100%; max-width:344px; background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:22px 20px 18px; box-shadow:0 22px 54px rgba(39,71,74,.34); transform:translateY(10px) scale(.97); transition:transform .2s cubic-bezier(.3,.8,.3,1);}
+  .modal-bg.open .modal{transform:none;}
+  .modal-title{font-family:var(--serif); font-size:20px; font-weight:600; margin-bottom:7px; letter-spacing:-.2px;}
+  .modal-msg{font-size:14.5px; color:var(--txt); line-height:1.5; white-space:pre-line;}
+  .modal-input{margin-top:15px; width:100%; background:var(--card2); border:1px solid var(--line); border-radius:12px; color:var(--txt); padding:13px; font-size:18px; text-align:center; font-weight:700;}
+  .modal-actions{display:flex; gap:9px; margin-top:19px;}
+  .modal-btn{flex:1; height:47px; border-radius:13px; font-size:14.5px; font-weight:700;}
+  .modal-btn:active{transform:translateY(1px);}
+  .modal-cancel{background:var(--card2); border:1px solid var(--line); color:var(--txt);}
+  .modal-ok{background:var(--accent); color:var(--on-accent);}
+  .modal-ok.danger{background:var(--danger);}
+
   .toast{position:fixed; left:50%; transform:translateX(-50%) translateY(20px); bottom:calc(96px + env(safe-area-inset-bottom));
     background:var(--txt); color:var(--bg); font-weight:700; font-size:14px; padding:12px 22px; border-radius:999px; z-index:60;
     opacity:0; pointer-events:none; transition:all .3s; box-shadow:0 10px 28px rgba(39,71,74,.28);}
@@ -587,7 +604,7 @@ function levelUp(ex){
 }
 
 /* ---------- Log session ---------- */
-function logSession(){
+async function logSession(){
   ensureDraft();
   draft.note = document.getElementById("note").value.trim();
   draft.bw = document.getElementById("bw").value.trim();
@@ -625,21 +642,21 @@ function logSession(){
   draft = null;
   save();
 
-  if(bestPull > state.strictMax && bestPull>0){
-    if(confirm(`New best set of ${bestPull} strict reps — update your strict max from ${state.strictMax} to ${bestPull}?`)){
-      setMax(bestPull);
-    }
-  }
-
   toast(t==="rest" ? "Rest logged ✓" : "Session logged ✓");
   renderAll();
   window.scrollTo({top:0, behavior:"smooth"});
+
+  if(bestPull > state.strictMax && bestPull>0){
+    if(await uiConfirm(`New best set of ${bestPull} strict reps — update your strict max from ${state.strictMax} to ${bestPull}?`, {okText:"Update"})){
+      setMax(bestPull);
+    }
+  }
 }
 
 /* ---------- Log a surf session ---------- */
 // Surfing is its own session type. It counts toward streak/this-week/history
 // but does NOT advance the bar cycle and has no countable reps for the volume chart.
-function logSurf(){
+async function logSurf(){
   const d = todayISO();
   const existing = state.sessions.find(s=>s.type==="surf" && s.date===d);
 
@@ -659,7 +676,8 @@ function logSurf(){
   let undone = false;
   const t = activeType();
   if(t!=="light" && t!=="rest"){
-    if(confirm("🏄 Surf logged. Make today a LIGHT day on the bar?\n\nOK  =  switch to Light\nCancel  =  undo the surf")){
+    if(await uiConfirm("🏄 Surf logged. Your back already got paddling volume — make today a Light day on the bar?",
+                       {okText:"Switch to Light", cancelText:"Undo the surf"})){
       overrideType = "light"; draft = null;
     } else {
       state.sessions = state.sessions.filter(s=>s.id!==session.id);
@@ -684,8 +702,8 @@ function setMax(v){
   renderHeader(); renderProgress();
 }
 // Quick edit from anywhere (header chip or the big Progress number).
-function editMaxPrompt(){
-  const v = prompt("Set your current strict pull-up max:", state.strictMax || 0);
+async function editMaxPrompt(){
+  const v = await uiPrompt("Set your current strict pull-up max:", state.strictMax || 0, {inputMode:"numeric"});
   if(v===null) return;
   const n = parseInt(v, 10);
   if(!isNaN(n)){ setMax(Math.max(0, n)); toast("Strict max updated"); }
@@ -779,6 +797,44 @@ function drawLineChart(id, data, unit){
 function emptyMsg(t){ return `<div class="empty">${t}</div>`; }
 function shortDate(iso){ const d=new Date(iso+"T00:00:00"); return (d.getMonth()+1)+"/"+d.getDate(); }
 
+/* ---------- Custom modal (reliable replacement for native confirm/prompt/alert) ---------- */
+function showModal({title="", message="", okText="OK", cancelText="Cancel", danger=false, input=false, inputValue="", inputMode=""}){
+  return new Promise(resolve=>{
+    const bg = document.createElement("div");
+    bg.className = "modal-bg";
+    const box = document.createElement("div");
+    box.className = "modal";
+    if(title){ const t=document.createElement("div"); t.className="modal-title"; t.textContent=title; box.appendChild(t); }
+    const msg = document.createElement("div"); msg.className="modal-msg"; msg.textContent=message; box.appendChild(msg);
+    let inputEl = null;
+    if(input){
+      inputEl = document.createElement("input"); inputEl.className="modal-input";
+      inputEl.type = "text"; if(inputMode) inputEl.inputMode = inputMode;
+      inputEl.value = inputValue;
+      box.appendChild(inputEl);
+    }
+    const actions = document.createElement("div"); actions.className="modal-actions";
+    if(cancelText){
+      const c=document.createElement("button"); c.className="modal-btn modal-cancel"; c.textContent=cancelText;
+      c.onclick=()=>close(input?null:false); actions.appendChild(c);
+    }
+    const ok=document.createElement("button"); ok.className="modal-btn modal-ok"+(danger?" danger":""); ok.textContent=okText;
+    ok.onclick=()=>close(input?inputEl.value:true); actions.appendChild(ok);
+    box.appendChild(actions);
+    bg.appendChild(box);
+    bg.onclick=(e)=>{ if(e.target===bg) close(input?null:false); };
+    if(inputEl) inputEl.addEventListener("keydown", e=>{ if(e.key==="Enter") close(inputEl.value); });
+    document.body.appendChild(bg);
+    if(inputEl){ inputEl.focus(); inputEl.select(); }    // synchronous focus keeps the keyboard in the tap gesture
+    requestAnimationFrame(()=> bg.classList.add("open"));
+    let done=false;
+    function close(result){ if(done) return; done=true; bg.classList.remove("open"); setTimeout(()=>bg.remove(),200); resolve(result); }
+  });
+}
+const uiConfirm = (message, opts={}) => showModal({message, okText:opts.okText||"OK", cancelText:opts.cancelText||"Cancel", danger:opts.danger, title:opts.title||""});
+const uiAlert   = (message) => showModal({message, okText:"OK", cancelText:""}).then(()=>{});
+const uiPrompt  = (message, value="", opts={}) => showModal({message, input:true, inputValue:String(value), inputMode:opts.inputMode||"", okText:opts.okText||"Save", cancelText:"Cancel"});
+
 /* ---------- Rendering: History ---------- */
 function renderHistory(){
   const el = document.getElementById("histList");
@@ -801,10 +857,10 @@ function renderHistory(){
         ${s.note?`<div class="hnote">“${escapeHtml(s.note)}”</div>`:""}
       </div>
       <button class="hdel" data-id="${s.id}">🗑</button>`;
-    row.querySelector(".hdel").onclick = ()=>{
-      if(confirm("Delete this session?")){
+    row.querySelector(".hdel").onclick = async ()=>{
+      if(await uiConfirm("Delete this session? This can't be undone.", {okText:"Delete", danger:true})){
         state.sessions = state.sessions.filter(x=>x.id!==s.id);
-        save(); renderAll();
+        save(); renderAll(); renderHistory();
       }
     };
     el.appendChild(row);
@@ -860,15 +916,15 @@ function exportCsv(){
 /* ---------- Import (restore from JSON backup) ---------- */
 function importJson(file){
   const reader = new FileReader();
-  reader.onload = ()=>{
+  reader.onload = async ()=>{
     let data;
     try{ data = JSON.parse(reader.result); }
-    catch(e){ alert("That file isn't valid JSON — pick a backup exported from this app."); return; }
+    catch(e){ await uiAlert("That file isn't valid JSON — pick a backup exported from this app."); return; }
     const looksRight = data && typeof data==="object" &&
       ("sessions" in data || "startDate" in data || "strictMax" in data);
-    if(!looksRight){ alert("That doesn't look like a Pull-Up Tracker backup."); return; }
+    if(!looksRight){ await uiAlert("That doesn't look like a Pull-Up Tracker backup."); return; }
     const n = Array.isArray(data.sessions) ? data.sessions.length : 0;
-    if(confirm(`Import this backup?\n\nIt will REPLACE all current data on this device.\n• ${n} session(s)\n• start ${data.startDate||"?"}\n• strict max ${data.strictMax??"?"}`)){
+    if(await uiConfirm(`Import this backup? It will REPLACE all current data on this device.\n\n• ${n} session(s)\n• start ${data.startDate||"?"}\n• strict max ${data.strictMax??"?"}`, {okText:"Import", danger:true})){
       // merge over a default shape so older/partial backups can't break the app
       const base = {startDate:todayISO(), cycleIndex:0, strictMax:0, startMax:0, maxHistory:[], sessions:[], bwHistory:[]};
       localStorage.setItem(KEY, JSON.stringify(Object.assign(base, data)));
@@ -939,17 +995,17 @@ document.getElementById("impFile").addEventListener("change", e=>{
   if(e.target.files[0]) importJson(e.target.files[0]);
   e.target.value = "";
 });
-document.getElementById("resetAll").onclick = ()=>{
-  if(confirm("Erase ALL workout data on this device? This cannot be undone.")){
+document.getElementById("resetAll").onclick = async ()=>{
+  if(await uiConfirm("Erase ALL workout data on this device? This cannot be undone.", {okText:"Erase", danger:true})){
     localStorage.removeItem(KEY); location.reload();
   }
 };
 
 // First run: capture starting max
 if(state.maxHistory.length===0 && state.strictMax===0){
-  // gentle non-blocking prompt deferred until after first paint
-  setTimeout(()=>{
-    const v = prompt("Welcome! What's your current strict pull-up max? (You can change this anytime in Settings.)","2");
+  // gentle prompt deferred until after first paint
+  setTimeout(async ()=>{
+    const v = await uiPrompt("Welcome! What's your current strict pull-up max? You can change this anytime in Settings.", 2, {inputMode:"numeric", okText:"Set"});
     if(v!==null){ const n=parseInt(v)||0; state.startMax=n; setMax(n); }
   }, 400);
 }
