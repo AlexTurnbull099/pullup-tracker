@@ -1,0 +1,918 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Pull-Up Tracker//Summer Plan//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Summer Pull-Up Plan
+X-WR-TIMEZONE:America/New_York
+BEGIN:VEVENT
+UID:pullup-20260629@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260629T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 1)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260630@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260630T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 1)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260701@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260701T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 1)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260702@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260702T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 1)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260703@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260703T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 1)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260704@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260704T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 1)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260705@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260705T180000
+DURATION:PT45M
+SUMMARY:😴 Rest day (Wk 1)
+DESCRIPTION:Recovery is part of training. Sleep 7–9 hrs\, eat enough protein\, let the muscle grow.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:😴 Rest day
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260706@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260706T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 2)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260707@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260707T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 2)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260708@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260708T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 2)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260709@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260709T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 2)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260710@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260710T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 2)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260711@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260711T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 2)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260712@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260712T180000
+DURATION:PT45M
+SUMMARY:😴 Rest day (Wk 2)
+DESCRIPTION:Recovery is part of training. Sleep 7–9 hrs\, eat enough protein\, let the muscle grow.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:😴 Rest day
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260713@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260713T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 3)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260714@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260714T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 3)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260715@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260715T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 3)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260716@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260716T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 3)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260717@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260717T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 3)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260718@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260718T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 3)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260719@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260719T180000
+DURATION:PT45M
+SUMMARY:😴 Rest day (Wk 3)
+DESCRIPTION:Recovery is part of training. Sleep 7–9 hrs\, eat enough protein\, let the muscle grow.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:😴 Rest day
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260720@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260720T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 4)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260721@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260721T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 4)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260722@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260722T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 4)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260723@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260723T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 4)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260724@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260724T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 4)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260725@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260725T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 4)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260726@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260726T180000
+DURATION:PT45M
+SUMMARY:😴 Rest day (Wk 4)
+DESCRIPTION:Recovery is part of training. Sleep 7–9 hrs\, eat enough protein\, let the muscle grow.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:😴 Rest day
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260727@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260727T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 5)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260728@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260728T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 5)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260729@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260729T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 5)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260730@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260730T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 5)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260731@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260731T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 5)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260801@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260801T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 5)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260802@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260802T180000
+DURATION:PT45M
+SUMMARY:😴 Rest day (Wk 5)
+DESCRIPTION:Recovery is part of training. Sleep 7–9 hrs\, eat enough protein\, let the muscle grow.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:😴 Rest day
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260803@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260803T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 6)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260804@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260804T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 6)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260805@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260805T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 6)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260806@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260806T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 6)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260807@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260807T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 6)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260808@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260808T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 6)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260809@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260809T180000
+DURATION:PT45M
+SUMMARY:😴 Rest day (Wk 6)
+DESCRIPTION:Recovery is part of training. Sleep 7–9 hrs\, eat enough protein\, let the muscle grow.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:😴 Rest day
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260810@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260810T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 7)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260811@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260811T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 7)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260812@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260812T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 7)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260813@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260813T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 7)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260814@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260814T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 7)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260815@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260815T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 7)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260816@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260816T180000
+DURATION:PT45M
+SUMMARY:😴 Rest day (Wk 7)
+DESCRIPTION:Recovery is part of training. Sleep 7–9 hrs\, eat enough protein\, let the muscle grow.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:😴 Rest day
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260817@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260817T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 8)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260818@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260818T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 8)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260819@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260819T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 8)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260820@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260820T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 8)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260821@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260821T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 8)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260822@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260822T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 8)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260823@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260823T180000
+DURATION:PT45M
+SUMMARY:😴 Rest day (Wk 8)
+DESCRIPTION:Recovery is part of training. Sleep 7–9 hrs\, eat enough protein\, let the muscle grow.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:😴 Rest day
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260824@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260824T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 9)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260825@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260825T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 9)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260826@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260826T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 9)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260827@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260827T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 9)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260828@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260828T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 9)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260829@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260829T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 9)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260830@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260830T180000
+DURATION:PT45M
+SUMMARY:😴 Rest day (Wk 9)
+DESCRIPTION:Recovery is part of training. Sleep 7–9 hrs\, eat enough protein\, let the muscle grow.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:😴 Rest day
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260831@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260831T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 10)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260901@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260901T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 10)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260902@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260902T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 10)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260903@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260903T180000
+DURATION:PT45M
+SUMMARY:💪 Heavy day — Pull-ups (Wk 10)
+DESCRIPTION:Build the rep. Scapular pulls\, pull-up negatives (slow 3–5s lowers)\, max-effort sets\, chin-ups\, push-ups\, hanging knee raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:💪 Heavy day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260904@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260904T180000
+DURATION:PT45M
+SUMMARY:🔁 Volume day — Pull-ups (Wk 10)
+DESCRIPTION:Accumulate reps. Scapular pulls\, submaximal chin-ups & pull-ups (short rest)\, flexed-arm hang\, push-ups\, leg raises.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🔁 Volume day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260905@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260905T180000
+DURATION:PT45M
+SUMMARY:🌤 Light day — Pull-ups (Wk 10)
+DESCRIPTION:Skill & recover. Easy pull-ups (never strain)\, dead hangs\, scapular pulls\, easy push-ups.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:🌤 Light day — Pull-ups
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pullup-20260906@alexturnbull099.github.io
+DTSTAMP:20260626T120000Z
+DTSTART:20260906T180000
+DURATION:PT45M
+SUMMARY:😴 Rest day (Wk 10)
+DESCRIPTION:Recovery is part of training. Sleep 7–9 hrs\, eat enough protein\, let the muscle grow.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:😴 Rest day
+END:VALARM
+END:VEVENT
+END:VCALENDAR
