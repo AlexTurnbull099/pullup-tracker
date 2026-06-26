@@ -60,7 +60,8 @@
   .surfbtn{width:100%; height:46px; border-radius:12px; margin-bottom:16px; display:flex; align-items:center; justify-content:center; gap:7px;
     background:rgba(24,197,212,.1); border:1px solid var(--surf); color:var(--surf); font-size:14px; font-weight:700;}
   .surfbtn:active{background:rgba(24,197,212,.22);}
-  .surfbtn.logged{background:rgba(24,197,212,.18);}
+  .surfbtn.logged{background:var(--surf); border-color:transparent; color:#04222e; font-weight:800;}
+  .surfbtn.logged:active{background:#14a8b5;}
 
   /* Exercise card */
   .ex{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:14px; margin-bottom:12px; transition:border-color .2s;}
@@ -482,7 +483,7 @@ function renderToday(){
 
   const surfBtn = document.getElementById("surfBtn");
   const surfedToday = state.sessions.some(s=>s.type==="surf" && s.date===todayISO());
-  surfBtn.textContent = surfedToday ? "🏄 Surfed today ✓  (tap to undo)" : "🏄 Surfed today";
+  surfBtn.textContent = surfedToday ? "🏄 Surf logged ✓ · tap to undo" : "🏄 Log a surf session";
   surfBtn.classList.toggle("logged", surfedToday);
 }
 
