@@ -34,6 +34,7 @@
   .gear{width:40px; height:40px; border-radius:12px; background:var(--card); display:grid; place-items:center; font-size:18px; flex:none;}
   .h-meta{display:flex; gap:8px; margin-top:10px;}
   .chip{flex:1; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:8px 10px; text-align:center;}
+  .chip.tappable{cursor:pointer;} .chip.tappable:active{border-color:var(--accent2); background:var(--card2);}
   .chip .n{font-size:18px; font-weight:800; line-height:1;}
   .chip .l{font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; margin-top:4px;}
   .phase-focus{font-size:12.5px; color:var(--muted); margin-top:10px; line-height:1.45;}
@@ -114,6 +115,9 @@
   .bigstat{display:flex; align-items:flex-end; gap:10px;}
   .bigstat .num{font-size:46px; font-weight:900; line-height:.9; letter-spacing:-1px;}
   .bigstat .sub{font-size:13px; color:var(--muted); padding-bottom:6px;}
+  .tapnum{cursor:pointer;}
+  .bigstat .num.tapnum:active{color:var(--accent2);}
+  #pMaxEdit{color:var(--accent2); font-weight:600; white-space:nowrap;}
   .maxctl{display:flex; gap:8px; margin-top:14px;}
   .maxctl button{flex:1; height:48px; border-radius:12px; background:var(--card2); border:1px solid var(--line); font-size:20px; font-weight:800;}
   .goalbar{height:10px; border-radius:6px; background:var(--card2); overflow:hidden; margin-top:14px;}
@@ -141,7 +145,9 @@
   .sheet{position:fixed; left:0; right:0; bottom:0; z-index:41; background:var(--bg2); border-radius:22px 22px 0 0;
     border-top:1px solid var(--line); padding:8px 18px calc(24px + env(safe-area-inset-bottom)); transform:translateY(102%); transition:transform .3s cubic-bezier(.3,.8,.3,1); max-width:560px; margin:0 auto; max-height:88vh; overflow:auto;}
   .sheet.open{transform:translateY(0);}
-  .grab{width:38px; height:5px; background:var(--line); border-radius:3px; margin:8px auto 16px;}
+  .grabzone{display:flex; justify-content:center; align-items:center; height:34px; margin:-8px 0 4px; touch-action:none; cursor:grab;}
+  .grabzone:active{cursor:grabbing;}
+  .grab{width:38px; height:5px; background:var(--line); border-radius:3px;}
   .sheet h3{margin:0 0 14px; font-size:18px;}
   .srow{border-top:1px solid var(--line); padding:16px 0;}
   .srow:first-of-type{border-top:none;}
@@ -169,7 +175,7 @@
     <div class="chip"><div class="n" id="weekN">1</div><div class="l">Week</div></div>
     <div class="chip"><div class="n" id="streakN">0</div><div class="l">Day streak</div></div>
     <div class="chip"><div class="n" id="weekSessN">0</div><div class="l">This week</div></div>
-    <div class="chip"><div class="n" id="maxChip">–</div><div class="l">Strict max</div></div>
+    <div class="chip tappable" id="chipMax"><div class="n" id="maxChip">–</div><div class="l">Strict max ✎</div></div>
   </div>
   <div class="phase-focus" id="phaseFocus"></div>
 </header>
@@ -204,8 +210,8 @@
   <section id="tab-progress" class="hidden">
     <div class="card">
       <div class="bigstat">
-        <div class="num" id="pMax">–</div>
-        <div class="sub">strict pull-ups<br>current best</div>
+        <div class="num tapnum" id="pMax" title="Tap to edit">–</div>
+        <div class="sub">strict pull-ups<br>current best · <span class="tapnum" id="pMaxEdit">tap # to set ✎</span></div>
       </div>
       <div class="maxctl">
         <button id="maxMinus">−</button>
@@ -244,7 +250,7 @@
 <!-- Settings sheet -->
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet">
-  <div class="grab"></div>
+  <div class="grabzone" id="grabZone"><div class="grab"></div></div>
   <h3>Settings</h3>
   <div class="srow">
     <div class="sl">Plan start date</div>
@@ -476,7 +482,7 @@ function renderToday(){
 
   const surfBtn = document.getElementById("surfBtn");
   const surfedToday = state.sessions.some(s=>s.type==="surf" && s.date===todayISO());
-  surfBtn.textContent = surfedToday ? "🏄 Surfed today ✓" : "🏄 Surfed today";
+  surfBtn.textContent = surfedToday ? "🏄 Surfed today ✓  (tap to undo)" : "🏄 Surfed today";
   surfBtn.classList.toggle("logged", surfedToday);
 }
 
@@ -613,24 +619,34 @@ function logSession(){
 // but does NOT advance the bar cycle and has no countable reps for the volume chart.
 function logSurf(){
   const d = todayISO();
-  const already = state.sessions.some(s=>s.type==="surf" && s.date===d);
-  if(already){
-    toast("Surf already logged today 🏄");
-  } else {
-    state.sessions.push({id:Date.now(), date:d, type:"surf", exercises:[], note:"", bw:null});
-    save();
-    toast("Surf logged 🏄");
-  }
-  renderHeader();
+  const existing = state.sessions.find(s=>s.type==="surf" && s.date===d);
 
-  // Offer to make today a Light day on the bar — your back already paddled.
+  // Already logged today → tapping again undoes it (toggle off).
+  if(existing){
+    state.sessions = state.sessions.filter(s=>s.id!==existing.id);
+    save();
+    toast("Surf undone");
+    renderHeader(); renderToday();
+    return;
+  }
+
+  // Log the surf, then offer to drop to a Light day. Cancel undoes the whole thing.
+  const session = {id:Date.now(), date:d, type:"surf", exercises:[], note:"", bw:null};
+  state.sessions.push(session);
+
+  let undone = false;
   const t = activeType();
   if(t!=="light" && t!=="rest"){
-    if(confirm("Nice 🏄 Your back already got paddling volume today. Make today a LIGHT day on the bar?\n\n(Or tap Rest yourself if you're beat up.)")){
+    if(confirm("🏄 Surf logged. Make today a LIGHT day on the bar?\n\nOK  =  switch to Light\nCancel  =  undo the surf")){
       overrideType = "light"; draft = null;
+    } else {
+      state.sessions = state.sessions.filter(s=>s.id!==session.id);
+      undone = true;
     }
   }
-  renderToday();
+  save();
+  toast(undone ? "Surf undone" : "Surf logged 🏄");
+  renderHeader(); renderToday();
 }
 
 /* ---------- Strict max ---------- */
@@ -644,6 +660,13 @@ function setMax(v){
   else state.maxHistory.push({date:d, value:v});
   save();
   renderHeader(); renderProgress();
+}
+// Quick edit from anywhere (header chip or the big Progress number).
+function editMaxPrompt(){
+  const v = prompt("Set your current strict pull-up max:", state.strictMax || 0);
+  if(v===null) return;
+  const n = parseInt(v, 10);
+  if(!isNaN(n)){ setMax(Math.max(0, n)); toast("Strict max updated"); }
 }
 
 /* ---------- Rendering: Progress ---------- */
@@ -852,9 +875,38 @@ document.getElementById("bw").addEventListener("input", e=>{ if(draft) draft.bw=
 
 document.getElementById("maxPlus").onclick = ()=> setMax((state.strictMax||0)+1);
 document.getElementById("maxMinus").onclick = ()=> setMax(Math.max(0,(state.strictMax||0)-1));
+document.getElementById("chipMax").onclick = editMaxPrompt;
+document.getElementById("pMax").onclick = editMaxPrompt;
+document.getElementById("pMaxEdit").onclick = editMaxPrompt;
 
 document.getElementById("gearBtn").onclick = openSheet;
 document.getElementById("sheetBg").onclick = closeSheet;
+
+// Swipe down on the grab handle to dismiss the settings sheet.
+(function(){
+  const sheet = document.getElementById("sheet");
+  const zone = document.getElementById("grabZone");
+  let startY = null, dy = 0;
+  zone.addEventListener("pointerdown", e=>{
+    startY = e.clientY; dy = 0;
+    sheet.style.transition = "none";
+    zone.setPointerCapture(e.pointerId);
+  });
+  zone.addEventListener("pointermove", e=>{
+    if(startY===null) return;
+    dy = Math.max(0, e.clientY - startY);
+    sheet.style.transform = `translateY(${dy}px)`;
+  });
+  function end(){
+    if(startY===null) return;
+    sheet.style.transition = "";
+    sheet.style.transform = "";
+    if(dy > 70) closeSheet();
+    startY = null; dy = 0;
+  }
+  zone.addEventListener("pointerup", end);
+  zone.addEventListener("pointercancel", end);
+})();
 document.getElementById("startDate").addEventListener("change", e=>{ state.startDate=e.target.value; save(); renderHeader(); });
 document.getElementById("setMax").addEventListener("change", e=>{ setMax(parseInt(e.target.value)||0); });
 document.getElementById("setStartMax").addEventListener("change", e=>{ state.startMax=parseInt(e.target.value)||0; save(); renderProgress(); });
