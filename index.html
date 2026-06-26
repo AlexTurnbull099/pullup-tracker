@@ -78,6 +78,14 @@
   .surfbtn.logged{background:var(--surf); border-color:transparent; color:var(--on-accent); font-weight:800; box-shadow:0 6px 18px rgba(47,154,160,.28);}
   .surfbtn.logged:active{background:#2a8a8f;}
 
+  /* Session progress */
+  .sessprog{display:flex; align-items:center; gap:11px; margin:2px 3px 15px;}
+  .sessprog .track{flex:1; height:8px; border-radius:5px; background:var(--card2); overflow:hidden;}
+  .sessprog .track > div{height:100%; background:linear-gradient(90deg,var(--accent2),var(--accent)); border-radius:5px; transition:width .25s;}
+  .sessprog .lbl{font-size:12px; color:var(--muted); white-space:nowrap;}
+  .sessprog .lbl b{font-family:var(--serif); font-size:14px; color:var(--txt); font-weight:600;}
+  .sessprog .lbl2{font-size:11px; color:var(--faint); white-space:nowrap; font-style:italic;}
+
   /* Exercise card */
   .ex{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:15px; margin-bottom:12px; transition:border-color .2s; box-shadow:var(--shadow);}
   .ex.done{border-color:rgba(47,143,135,.45);}
@@ -86,6 +94,8 @@
   .ex.done .ex-check{background:var(--accent); border-color:var(--accent);}
   .ex-name{font-size:16.5px; font-weight:700; letter-spacing:-.2px;}
   .ex-target{font-size:12px; color:var(--muted); margin-top:3px; line-height:1.4;}
+  .setcount{display:inline-block; margin-top:8px; font-size:11px; font-weight:700; color:var(--muted); background:var(--card2); border:1px solid var(--line); padding:3px 9px; border-radius:999px;}
+  .setcount.done{color:var(--accent); border-color:color-mix(in srgb, var(--accent) 40%, transparent); background:color-mix(in srgb, var(--accent) 12%, transparent);}
   .levelup{display:inline-block; margin-top:7px; font-size:11px; font-weight:700; color:var(--warn); background:rgba(207,138,69,.12); border:1px solid rgba(207,138,69,.32); padding:3px 9px; border-radius:999px;}
   .ex-info{width:32px; height:32px; border-radius:50%; flex:none; background:var(--card2); border:1px solid var(--line); color:var(--muted); font-size:15px; font-weight:700; display:grid; place-items:center; margin-top:1px;}
   .ex-info:active{background:var(--line);}
@@ -231,6 +241,7 @@
     </div>
     <div class="seg" id="seg"></div>
     <button class="surfbtn" id="surfBtn">🏄 Surfed today</button>
+    <div class="sessprog" id="sessProg"></div>
     <div id="exList"></div>
 
     <div id="logExtras">
@@ -353,7 +364,7 @@ const WORKOUTS = {
     {n:"Max pull-ups",         t:"3–4 sets — strict, stop 1 shy",          sets:3, unit:"reps", pull:true},
     {n:"Chin-ups",             t:"2–3 sets — underhand",                   sets:2, unit:"reps", pull:true},
     {n:"Push-ups",             t:"3 sets — last set explosive (pop-up power)", sets:3, unit:"reps"},
-    {n:"Hanging knee raises",  t:"3 sets — core",                          sets:3, unit:"reps"},
+    {n:"Core circuit",         t:"1 round — 7 moves × 30 + plank (see ⓘ)", sets:1, unit:"round"},
   ],
   volume: [
     {n:"Scapular pulls",   t:"2 × 8",                              sets:2, unit:"reps", top:8},
@@ -361,7 +372,7 @@ const WORKOUTS = {
     {n:"Pull-ups",         t:"3–4 sets — submaximal",              sets:3, unit:"reps", pull:true},
     {n:"Flexed-arm hang",  t:"3 sets — hold at the top",           sets:3, unit:"sec"},
     {n:"Push-ups",         t:"3–4 sets",                           sets:3, unit:"reps"},
-    {n:"Hanging leg raises", t:"3 sets",                           sets:3, unit:"reps"},
+    {n:"Core circuit",     t:"1 round — 7 moves × 30 + plank (see ⓘ)", sets:1, unit:"round"},
   ],
   light: [
     {n:"Easy pull-ups",  t:"5–8 × 1–2 — half your max, never strain", sets:5, unit:"reps", pull:true, top:2},
@@ -385,6 +396,7 @@ const HOW = {
   "Hanging leg raises":"Hang from the bar and raise <b>straight legs</b> up toward parallel (or higher), then lower slowly. A harder core move than knee raises — bend the knees if you need to.",
   "Flexed-arm hang":"Get your <b>chin above the bar</b> (jump up if needed) and simply <b>hold that top position</b> for as long as you can. Builds strength right at the hardest part of the pull.<span class='surf'>🏄 Surf: a static endurance hold — staying power for the paddling muscles.</span>",
   "Dead hangs":"Hang from the bar with <b>straight arms</b> and a relaxed grip, just holding for time. Builds grip strength and decompresses your spine — a great finisher.<span class='surf'>🏄 Surf: grip &amp; forearm endurance for duck-diving and holding your rails in heavy water.</span>",
+  "Core circuit":"One <b>round</b> = 30 reps of each, back to back: <b>crunches, toe touches, around-the-worlds, half v-sits, scissors, sit-up Russian twists, boat Russian twists</b> — then finish with a <b>30–45s plank</b> to balance all that crunching and protect your lower back. Keep it controlled and don't yank your neck on the sit-ups. Tap <b>+ add round</b> for each full round you complete.<span class='surf'>🏄 Surf: a strong, enduring core steadies your pop-up and keeps your hips up through long paddles.</span>",
 };
 
 const PHASES = [
@@ -394,8 +406,8 @@ const PHASES = [
 ];
 const DONE_PHASE = {name:"Plan complete", focus:"You finished the 10-week arc 💪 Keep the cycle rolling, or retest your max and set a new goal."};
 
-const DEFAULT_REP = {reps:3, sec:20};
-const STEP = {reps:1, sec:5};
+const DEFAULT_REP = {reps:3, sec:20, round:1};
+const STEP = {reps:1, sec:5, round:1};
 
 /* ---------- State ---------- */
 const KEY = "pullup-tracker-v1";
@@ -500,6 +512,21 @@ function renderToday(){
     seg.appendChild(b);
   });
 
+  // session progress — make it clear the goal is to complete every exercise (each for its sets)
+  const prog = document.getElementById("sessProg");
+  if(t==="rest" || draft.exercises.length===0){
+    prog.classList.add("hidden");
+  } else {
+    prog.classList.remove("hidden");
+    const total = draft.exercises.length;
+    const doneCount = draft.exercises.filter(e=> e.sets.length >= e.targetSets).length;
+    const pct = Math.round(doneCount/total*100);
+    prog.innerHTML =
+      `<div class="lbl"><b>${doneCount}/${total}</b> exercises</div>`
+      + `<div class="track"><div style="width:${pct}%"></div></div>`
+      + `<div class="lbl2">${doneCount===total ? "all done ✓" : "work down the list"}</div>`;
+  }
+
   const list = document.getElementById("exList");
   list.innerHTML = "";
   if(t==="rest"){
@@ -527,16 +554,19 @@ function renderToday(){
 
 function exerciseCard(ex,i){
   const card = document.createElement("div");
-  const done = ex.sets.length>0;
-  card.className = "ex" + (done?" done":"");
+  const n = ex.sets.length, target = ex.targetSets;
+  const complete = n >= target;        // "done" = the prescribed number of sets is reached
+  card.className = "ex" + (complete?" done":"");
 
   const head = document.createElement("div");
   head.className = "ex-head";
   const check = document.createElement("div");
-  check.className = "ex-check"; check.textContent = done ? "✓" : "";
+  check.className = "ex-check"; check.textContent = complete ? "✓" : "";
   const nameWrap = document.createElement("div");
   nameWrap.style.flex = "1";
-  nameWrap.innerHTML = `<div class="ex-name">${ex.n}</div><div class="ex-target">${ex.t||targetText(ex)}</div>`;
+  const word = ex.unit==="round" ? (target===1?"round":"rounds") : "sets";
+  nameWrap.innerHTML = `<div class="ex-name">${ex.n}</div><div class="ex-target">${ex.t||targetText(ex)}</div>`
+    + `<div class="setcount${complete?" done":""}">${n} / ${target} ${word}${complete?" ✓":""}</div>`;
   if(levelUp(ex)){
     const f = document.createElement("span");
     f.className = "levelup";
@@ -566,9 +596,11 @@ function exerciseCard(ex,i){
   ex.sets.forEach((v,si)=> sets.appendChild(setPill(ex,i,si)));
   const add = document.createElement("button");
   add.className = "addset";
-  add.textContent = ex.sets.length ? "+ set" : "+ add set";
+  const addWord = ex.unit==="round" ? "round" : "set";
+  add.textContent = ex.sets.length ? "+ "+addWord : "+ add "+addWord;
   add.onclick = ()=>{
-    const last = ex.sets.length ? ex.sets[ex.sets.length-1] : (ex.unit==="reps" ? Math.max(1,state.strictMax||DEFAULT_REP.reps) : DEFAULT_REP.sec);
+    const def = ex.unit==="reps" ? Math.max(1, state.strictMax||DEFAULT_REP.reps) : DEFAULT_REP[ex.unit];
+    const last = ex.sets.length ? ex.sets[ex.sets.length-1] : def;
     ex.sets.push(last);
     renderToday();
   };
@@ -587,7 +619,7 @@ function setPill(ex,i,si){
   const val = document.createElement("div");
   val.className="val"; val.textContent = ex.sets[si];
   const unit = document.createElement("div");
-  unit.className="unit"; unit.textContent = ex.unit==="sec"?"s":"";
+  unit.className="unit"; unit.textContent = ex.unit==="sec"?"s":(ex.unit==="round"?"rd":"");
   const plus = document.createElement("button");
   plus.className="stepbtn"; plus.textContent="+";
   plus.onclick = ()=>{ ex.sets[si]+=STEP[ex.unit]; renderToday(); };

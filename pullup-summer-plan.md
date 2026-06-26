@@ -27,8 +27,8 @@ This hits your back and arms hard twice a week, with lighter "greasing the groov
 | **Pull-up negatives** | 4–5 × 1 | Jump/step to the top, lower for a slow 3–5 sec. Your #1 size builder right now. |
 | Max pull-ups | 3–4 sets | As many strict as possible, stop 1 shy of failure. Rest 2–3 min. |
 | Chin-ups (underhand) | 2–3 sets | Usually you'll get more of these. |
-| Push-ups | 3 sets | Balances the pulling. |
-| Hanging knee raises | 3 sets | Core. |
+| Push-ups | 3 sets | Balances the pulling. Last set explosive for pop-up power. |
+| **Core circuit** | 1 round | 30 reps each: crunches, toe touches, around-the-worlds, half v-sits, scissors, sit-up Russian twists, boat Russian twists — then a 30–45s plank. |
 
 ### 🔁 VOLUME day (accumulate reps)
 | Exercise | Sets × Reps | Notes |
@@ -38,7 +38,7 @@ This hits your back and arms hard twice a week, with lighter "greasing the groov
 | Pull-ups | 3–4 sets | Submaximal, same idea. |
 | Flexed-arm hang | 3 sets | Hold at the top as long as you can. |
 | Push-ups | 3–4 sets | |
-| Hanging leg raises | 3 sets | |
+| **Core circuit** | 1 round | Same circuit as Heavy day (see above). |
 
 ### 🌤 LIGHT day (skill / recover)
 | Exercise | Sets × Reps | Notes |
