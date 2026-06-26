@@ -72,6 +72,16 @@ Make reps harder instead of just more numerous: wider grip, slower 3-sec descent
 - **No kipping/swinging** for size; strict and controlled builds more muscle.
 - **Control the descent** — the lowering phase grows as much muscle as the pull. Never just drop.
 
+## 🏄 Surfing focus
+This plan is already a strong surf-conditioning program — paddling is fundamentally **lat and back pulling endurance**, which is exactly what all the pull-up and chin-up work builds. A few cues to bias it toward the water:
+
+- **Paddling = pulling endurance.** Lean into your VOLUME days. Submaximal chin-ups and pull-ups with short rest train the muscles to keep firing stroke after stroke — that's what keeps you in the lineup instead of gassing out.
+- **Pop-up = explosive push.** On HEAVY days, make your **last push-up set explosive** — push hard enough that your hands leave the floor. That snappy press is the same pattern as popping to your feet on a wave.
+- **Shoulder durability.** Don't skip the **scapular pulls** — they're prehab for the exact joints a paddler hammers. Strong, controlled shoulders mean fewer tweaks over a long summer of sessions.
+- **Grip endurance.** The **dead hangs** on LIGHT days carry straight over to duck-diving and holding your rails in heavy water.
+
+You don't need to change the cycle — just know *why* each piece matters for surfing and put a little extra intent into those four.
+
 ## A note on results
 Size comes from the training **plus** enough sleep and enough food, especially protein. If the scale and your reps both aren't moving after a few weeks, eating a bit more is usually the missing piece — building muscle requires fuel, not restriction.
 

@@ -71,6 +71,7 @@
   .ex-info.on{background:var(--accent2); color:#04222e; border-color:transparent;}
   .ex-how{margin-top:12px; padding:13px 14px; background:var(--card2); border:1px solid var(--line); border-radius:12px; font-size:13px; line-height:1.6; color:var(--muted);}
   .ex-how b{color:var(--txt); font-weight:700;}
+  .ex-how .surf{display:block; margin-top:9px; color:var(--accent2); font-weight:600;}
 
   .sets{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
   .setpill{display:flex; align-items:center; background:var(--card2); border:1px solid var(--line); border-radius:12px; overflow:hidden;}
@@ -260,6 +261,14 @@
     </div>
   </div>
   <div class="srow">
+    <div class="sl">Restore from a JSON backup</div>
+    <div class="btn-row">
+      <button class="btn-2" id="impBtn">Import JSON…</button>
+    </div>
+    <input type="file" id="impFile" accept="application/json,.json" style="display:none">
+    <div style="font-size:11px; color:var(--faint); margin-top:8px;">Replaces all data on this device with the file's contents.</div>
+  </div>
+  <div class="srow">
     <div class="sl">Danger zone</div>
     <div class="btn-row">
       <button class="btn-2 danger" id="resetAll">Erase all data</button>
@@ -292,7 +301,7 @@ const WORKOUTS = {
     {n:"Pull-up negatives",    t:"4–5 × 1 — slow 3–5s lower (#1 builder)", sets:4, unit:"reps", pull:true, top:1},
     {n:"Max pull-ups",         t:"3–4 sets — strict, stop 1 shy",          sets:3, unit:"reps", pull:true},
     {n:"Chin-ups",             t:"2–3 sets — underhand",                   sets:2, unit:"reps", pull:true},
-    {n:"Push-ups",             t:"3 sets — balance the pulling",           sets:3, unit:"reps"},
+    {n:"Push-ups",             t:"3 sets — last set explosive (pop-up power)", sets:3, unit:"reps"},
     {n:"Hanging knee raises",  t:"3 sets — core",                          sets:3, unit:"reps"},
   ],
   volume: [
@@ -314,17 +323,17 @@ const WORKOUTS = {
 
 // How-to text, keyed by exercise name (shared across day-types).
 const HOW = {
-  "Scapular pulls":"Hang with <b>straight arms</b>. Without bending your elbows, pull your shoulder blades <b>down and back</b> so your body rises an inch or two. Pause, then relax to a full hang. This teaches the way every pull should start — shoulders first, not arms.",
-  "Pull-up negatives":"Jump or step up so your <b>chin starts above the bar</b> (overhand grip). Then lower yourself as <b>slowly as you can — aim 3–5 seconds</b> — until your arms are straight. The slow lowering is the single biggest muscle-builder while your strict reps are still low.",
-  "Max pull-ups":"Overhand grip, hands about shoulder-width. From a <b>dead hang</b>, pull until your <b>chin clears the bar</b>, then lower under control. Strict — no kipping or swinging. Do as many clean reps as you can and <b>stop one shy of failure</b>.",
-  "Chin-ups":"Same as a pull-up but with an <b>underhand grip</b> (palms facing you). This brings in the biceps, so most people get a few more reps than on pull-ups.",
-  "Pull-ups":"Overhand grip, shoulder-width. Dead hang at the bottom, chin clearly over the bar at the top, controlled all the way down. On Volume days keep these <b>submaximal</b> — stop well before failure.",
-  "Easy pull-ups":"Strict pull-ups at about <b>half your max</b> — crisp and controlled, stopping long before fatigue. The goal is practice and volume, <b>never strain</b>. Spread them across the day if you like.",
-  "Push-ups":"Hands slightly wider than your shoulders, body in one straight line from head to heels. Lower until your chest nearly touches the floor, then press back up. Balances out all the pulling.",
+  "Scapular pulls":"Hang with <b>straight arms</b>. Without bending your elbows, pull your shoulder blades <b>down and back</b> so your body rises an inch or two. Pause, then relax to a full hang. This teaches the way every pull should start — shoulders first, not arms.<span class='surf'>🏄 Surf: direct prehab for the shoulders you paddle on — do these honestly, they keep the joint healthy over long sessions.</span>",
+  "Pull-up negatives":"Jump or step up so your <b>chin starts above the bar</b> (overhand grip). Then lower yourself as <b>slowly as you can — aim 3–5 seconds</b> — until your arms are straight. The slow lowering is the single biggest muscle-builder while your strict reps are still low.<span class='surf'>🏄 Surf: builds the lats &amp; back that drive every paddle stroke.</span>",
+  "Max pull-ups":"Overhand grip, hands about shoulder-width. From a <b>dead hang</b>, pull until your <b>chin clears the bar</b>, then lower under control. Strict — no kipping or swinging. Do as many clean reps as you can and <b>stop one shy of failure</b>.<span class='surf'>🏄 Surf: raw pulling strength — a stronger paddle that fatigues slower in the lineup.</span>",
+  "Chin-ups":"Same as a pull-up but with an <b>underhand grip</b> (palms facing you). This brings in the biceps, so most people get a few more reps than on pull-ups.<span class='surf'>🏄 Surf: bias toward higher reps here — paddling is endurance, and more clean reps = longer paddles before you gas out.</span>",
+  "Pull-ups":"Overhand grip, shoulder-width. Dead hang at the bottom, chin clearly over the bar at the top, controlled all the way down. On Volume days keep these <b>submaximal</b> — stop well before failure.<span class='surf'>🏄 Surf: submaximal, repeatable pulling is exactly the quality a long paddle demands.</span>",
+  "Easy pull-ups":"Strict pull-ups at about <b>half your max</b> — crisp and controlled, stopping long before fatigue. The goal is practice and volume, <b>never strain</b>. Spread them across the day if you like.<span class='surf'>🏄 Surf: easy paddling-pattern volume that keeps the shoulders fresh, not beat up.</span>",
+  "Push-ups":"Hands slightly wider than your shoulders, body in one straight line from head to heels. Lower until your chest nearly touches the floor, then press back up. Balances out all the pulling.<span class='surf'>🏄 Surf: this is your <b>pop-up</b>. Make the last set <b>explosive</b> — push hard enough that your hands leave the floor — to train a fast, snappy stand-up.</span>",
   "Hanging knee raises":"Hang from the bar. Raise your <b>knees toward your chest</b>, pause, then lower with control. Don't swing — let your abs do the work.",
   "Hanging leg raises":"Hang from the bar and raise <b>straight legs</b> up toward parallel (or higher), then lower slowly. A harder core move than knee raises — bend the knees if you need to.",
-  "Flexed-arm hang":"Get your <b>chin above the bar</b> (jump up if needed) and simply <b>hold that top position</b> for as long as you can. Builds strength right at the hardest part of the pull.",
-  "Dead hangs":"Hang from the bar with <b>straight arms</b> and a relaxed grip, just holding for time. Builds grip strength and decompresses your spine — a great finisher.",
+  "Flexed-arm hang":"Get your <b>chin above the bar</b> (jump up if needed) and simply <b>hold that top position</b> for as long as you can. Builds strength right at the hardest part of the pull.<span class='surf'>🏄 Surf: a static endurance hold — staying power for the paddling muscles.</span>",
+  "Dead hangs":"Hang from the bar with <b>straight arms</b> and a relaxed grip, just holding for time. Builds grip strength and decompresses your spine — a great finisher.<span class='surf'>🏄 Surf: grip &amp; forearm endurance for duck-diving and holding your rails in heavy water.</span>",
 };
 
 const PHASES = [
@@ -765,6 +774,27 @@ function exportCsv(){
   download("pullup-log.csv", csv, "text/csv");
 }
 
+/* ---------- Import (restore from JSON backup) ---------- */
+function importJson(file){
+  const reader = new FileReader();
+  reader.onload = ()=>{
+    let data;
+    try{ data = JSON.parse(reader.result); }
+    catch(e){ alert("That file isn't valid JSON — pick a backup exported from this app."); return; }
+    const looksRight = data && typeof data==="object" &&
+      ("sessions" in data || "startDate" in data || "strictMax" in data);
+    if(!looksRight){ alert("That doesn't look like a Pull-Up Tracker backup."); return; }
+    const n = Array.isArray(data.sessions) ? data.sessions.length : 0;
+    if(confirm(`Import this backup?\n\nIt will REPLACE all current data on this device.\n• ${n} session(s)\n• start ${data.startDate||"?"}\n• strict max ${data.strictMax??"?"}`)){
+      // merge over a default shape so older/partial backups can't break the app
+      const base = {startDate:todayISO(), cycleIndex:0, strictMax:0, startMax:0, maxHistory:[], sessions:[], bwHistory:[]};
+      localStorage.setItem(KEY, JSON.stringify(Object.assign(base, data)));
+      location.reload();
+    }
+  };
+  reader.readAsText(file);
+}
+
 /* ---------- Toast ---------- */
 let toastTimer;
 function toast(msg){
@@ -791,6 +821,11 @@ document.getElementById("setMax").addEventListener("change", e=>{ setMax(parseIn
 document.getElementById("setStartMax").addEventListener("change", e=>{ state.startMax=parseInt(e.target.value)||0; save(); renderProgress(); });
 document.getElementById("expJson").onclick = exportJson;
 document.getElementById("expCsv").onclick = exportCsv;
+document.getElementById("impBtn").onclick = ()=> document.getElementById("impFile").click();
+document.getElementById("impFile").addEventListener("change", e=>{
+  if(e.target.files[0]) importJson(e.target.files[0]);
+  e.target.value = "";
+});
 document.getElementById("resetAll").onclick = ()=>{
   if(confirm("Erase ALL workout data on this device? This cannot be undone.")){
     localStorage.removeItem(KEY); location.reload();
